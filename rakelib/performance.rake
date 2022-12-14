@@ -3,12 +3,18 @@
 namespace :benchmark do
   desc "Run the liquid benchmark with lax parsing"
   task :run do
-    ruby "./performance.rb c benchmark lax"
+    ruby "./performance.rb c benchmark lax base os2"
+    ruby "./performance.rb c benchmark lax optimized os2"
+    ruby "./performance.rb c benchmark lax base os1"
+    ruby "./performance.rb c benchmark lax optimized os1"
   end
 
   desc "Run the liquid benchmark with strict parsing"
   task :strict do
-    ruby "./performance.rb c benchmark strict"
+    ruby "./performance.rb c benchmark strict base os2"
+    ruby "./performance.rb c benchmark strict optimized os2"
+    ruby "./performance.rb c benchmark strict base os1"
+    ruby "./performance.rb c benchmark strict optimized os1"
   end
 end
 
@@ -36,8 +42,8 @@ namespace :compare do
   ["lax", "warn", "strict"].each do |type|
     desc "Compare Liquid to Liquid-C in #{type} mode"
     task type.to_sym do
-      ruby "./performance.rb bare benchmark #{type}"
-      ruby "./performance.rb c benchmark #{type}"
+      ruby "./performance.rb bare benchmark #{type} optimized os2"
+      ruby "./performance.rb c benchmark #{type} optimized os2"
     end
   end
 end
