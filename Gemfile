@@ -21,3 +21,5 @@ end
 group :development do
   gem "byebug"
 end
+
+gem "ruby-lsp", "~> 0.3.7", :group => :development
